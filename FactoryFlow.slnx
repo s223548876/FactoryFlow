@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FactoryFlow.Api/FactoryFlow.Api.csproj" />
+  <Project Path="FactoryFlow.Api.Tests/FactoryFlow.Api.Tests.csproj" />
+</Solution>
