@@ -39,74 +39,34 @@ namespace FactoryFlow.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<MachineResponse>> Create(CreateMachineRequest request)
         {
-            try
-            {
-                MachineResponse machine = await _machineService.CreateAsync(request);
+            MachineResponse machine = await _machineService.CreateAsync(request);
 
-                return CreatedAtAction(
-                    nameof(GetByCode),
-                    new { code = machine.Code },
-                    machine
-                    );
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(ex.Message);
-            }
+            return CreatedAtAction(
+                nameof(GetByCode),
+                new { code = machine.Code },
+                machine
+                );
         }
 
         [HttpPost("{code}/start")]
         public async Task<ActionResult<MachineResponse>> Start(string code)
         {
-            try
-            {
-                MachineResponse machine = await _machineService.StartAsync(code);
-                return Ok(machine);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(ex.Message);
-            }
+            MachineResponse machine = await _machineService.StartAsync(code);
+            return Ok(machine);
         }
 
         [HttpPost("{code}/stop")]
         public async Task<ActionResult<MachineResponse>> Stop(string code)
         {
-            try
-            {
-                MachineResponse machine = await _machineService.StopAsync(code);
-                return Ok(machine);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(ex.Message);
-            }
+            MachineResponse machine = await _machineService.StopAsync(code);
+            return Ok(machine);
         }
 
         [HttpPost("{code}/maintenance")]
         public async Task<ActionResult<MachineResponse>> Maintenance(string code)
         {
-            try
-            {
-                MachineResponse machine = await _machineService.MaintenanceAsync(code);
-                return Ok(machine);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(ex.Message);
-            }
+            MachineResponse machine = await _machineService.MaintenanceAsync(code);
+            return Ok(machine);
         }
     }
 }
