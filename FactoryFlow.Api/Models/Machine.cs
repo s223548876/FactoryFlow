@@ -14,6 +14,7 @@
         public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public MachineStatus Status { get; private set; } = MachineStatus.Idle;
+        public List<WorkOrder> WorkOrders { get; set; } = new();
 
         private Machine()
         {

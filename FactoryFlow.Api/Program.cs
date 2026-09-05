@@ -16,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // 如果有人需要 IMachineService, 提供 MachineService
 builder.Services.AddScoped<IMachineService, MachineService>();
+builder.Services.AddScoped<IWorkOrderService, WorkOrderService>();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
